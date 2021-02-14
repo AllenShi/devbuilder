@@ -1,29 +1,37 @@
 #!/bin/bash
 
 # Step 1: create group and user
+printf "Step 1: create group and user\n"
 groupadd devopsgrp
 useradd -m -g devopsgrp devops
 
 # Step 2: add into sudoer group 
-echo "devops  ALL=(ALL)       NOPASSWD: ALL" >> /ect/sudoers.d/devops
+printf "Step 2: add into sudoer group\n" 
+echo "devops  ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers.d/devops
 
 # Step 3: yum update
-yum -y update
+printf "Step 3: yum update (omitted now)\n"
+# yum -y update
 
 # Step 4: switch to devops
+printf "Step 4: switch to devops\n"
 su -l devops
 
 # Step 5: ssh-keygen
+printf "Step 5: ssh-keygen\n"
 ssh-keygen -f id_rsa -N ""
 
 # Step 6: install git
-sudo yum install git
+printf "Step 6: install git\n"
+sudo yum install -y git
 
 # Step 7: install gcc tool chains
-sudo yum install gcc clang cmake
-sudo tmux
+printf "Step 7: install gcc tool chains\n"
+sudo yum install -y gcc clang cmake
+sudo yum install -y tmux
 
 # Step 8: install rustlang
+printf "Step 8: install rustlang\n"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cat > $HOME/.cargo/config >>EOF
 [source.crates-io]
@@ -37,6 +45,7 @@ source $HOME/.bash_profile
 rustc --version
 
 # Step 9: install golang
+printf "Step 9: install golang\n"
 echo "export GOPROXY=https://mirrors.aliyun.com/goproxy/" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 wget https://golang.org/dl/go1.15.8.linux-amd64.tar.gz
@@ -46,11 +55,14 @@ source $HOME/.bash_profile
 go version
 
 # Step 10: install Java SDK
+printf "Step 10: install Java SDK\n"
 wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/15.0.2%2B7/0d1cfde4252546c6931946de8db48ee2/jdk-15.0.2_linux-x64_bin.rpm
 sudo yum remove java -y && yum localinstall jdk-15.0.2_linux-x64_bin.rpm -y 
 sudo alternatives --display java
+java --version
 
 # Step 11: create workspace for different projects
+printf "Step 11: create workspace for different projects\n"
 mkdir -p $HOME/projects/rustlangws/
 mkdir -p $HOME/projects/golangws/
 mkdir -p $HOME/projects/javalangws/
