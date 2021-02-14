@@ -2,8 +2,12 @@
 
 # Step 1: create group and user
 printf "Step 1: create group and user\n"
-groupadd devopsgrp
-useradd -m -g devopsgrp devops
+if id devops &>/dev/null; then
+	printf "devops user exists\n"
+else
+    groupadd devopsgrp
+    useradd -m -g devopsgrp devops
+fi
 
 # Step 2: add into sudoer group 
 printf "Step 2: add into sudoer group\n" 
