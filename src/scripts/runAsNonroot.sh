@@ -2,6 +2,7 @@
 
 # Step 5: ssh-keygen
 printf "Step 5: ssh-keygen\n"
+printf "Current HOME is $HOME, current user is $(whoami)\n"
 ssh-keygen -f id_rsa -N ""
 
 # Step 6: install git
