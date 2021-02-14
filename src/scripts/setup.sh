@@ -11,7 +11,7 @@ fi
 
 # Step 2: add into sudoer group 
 printf "Step 2: add into sudoer group\n" 
-echo "devops  ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers.d/devops
+rm -f /etc/sudoers.d/devops && echo "devops  ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers.d/devops
 
 # Step 3: yum update
 printf "Step 3: yum update (omitted now)\n"
@@ -19,5 +19,5 @@ printf "Step 3: yum update (omitted now)\n"
 
 # Step 4: switch to devops
 printf "Step 4: switch to devops\n"
-su -l -c runAsNonroot.sh devops
-
+cp ./runAsNonroot.sh ~devops/
+sudo -u devops "./runAsNonroot.sh" 
