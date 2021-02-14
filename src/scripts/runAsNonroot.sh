@@ -17,7 +17,7 @@ sudo yum install -y tmux
 # Step 8: install rustlang
 printf "Step 8: install rustlang\n"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-cat > $HOME/.cargo/config >>EOF
+cat > $HOME/.cargo/config <<EOF
 [source.crates-io]
 registry = "https://github.com/rust-lang/crates.io-index"
 replace-with = 'ustc'
