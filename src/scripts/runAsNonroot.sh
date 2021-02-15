@@ -32,8 +32,8 @@ rustc --version
 printf "Step 9: install golang\n"
 echo "export GOPROXY=https://mirrors.aliyun.com/goproxy/" >> $HOME/.bash_profile
 source $HOME/.bash_profile
-wget https://golang.org/dl/go1.15.8.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.15.8.linux-amd64.tar.gz
+# wget https://golang.org/dl/go1.15.8.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf ~/go1.15.8.linux-amd64.tar.gz
 echo "export PATH=/usr/local/go/bin:$PATH" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 go version
