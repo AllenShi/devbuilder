@@ -19,6 +19,7 @@ printf "Step 3: yum update (omitted now)\n"
 
 # Step 4: switch to devops
 printf "Step 4: switch to devops\n"
-chmod +x runAsNonroot.sh
+chmod +x ./runAsNonroot.sh
 cp ../../bin/go1.15.8.linux-amd64.tar.gz ~devops/
+cp ./runAsNonroot.sh ~devops/
 sudo -i -u devops ./runAsNonroot.sh 
