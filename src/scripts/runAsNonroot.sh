@@ -16,7 +16,9 @@ sudo yum install -y tmux
 
 # Step 8: install rustlang
 printf "Step 8: install rustlang\n"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+wget https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init && chmod +x rustup-init
+printf "1" | ./rustup-init 
 cat > $HOME/.cargo/config <<EOF
 [source.crates-io]
 registry = "https://github.com/rust-lang/crates.io-index"
@@ -41,7 +43,7 @@ go version
 # Step 10: install Java SDK
 printf "Step 10: install Java SDK\n"
 wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/15.0.2%2B7/0d1cfde4252546c6931946de8db48ee2/jdk-15.0.2_linux-x64_bin.rpm
-sudo yum remove java -y && yum localinstall jdk-15.0.2_linux-x64_bin.rpm -y 
+sudo yum remove java -y && sudo yum localinstall jdk-15.0.2_linux-x64_bin.rpm -y 
 sudo alternatives --display java
 java --version
 
