@@ -1,7 +1,9 @@
-#!/bin/bash # Step 5: ssh-keygen
+#!/bin/bash 
+
+# Step 5: ssh-keygen
 printf "Step 5: ssh-keygen\n"
 printf "Current HOME is $HOME, current user is $(whoami)\n"
-[ -f $HOME/.ssh/id_rsa ] || /bin/ssh-keygen -t rsa -f $HOME/.ssh/id_rsa -P ''
+[ -f $HOME/.ssh/id_rsa ] || ssh-keygen -t rsa -f $HOME/.ssh/id_rsa -P ''
 
 # Step 6: install git
 printf "Step 6: install git\n"
