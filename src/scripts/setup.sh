@@ -7,6 +7,7 @@ if id devops &>/dev/null; then
 else
     groupadd devopsgrp
     useradd -m -g devopsgrp devops
+	usermod -aG docker devops
 fi
 
 # Step 2: add into sudoer group 
